@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Contactos</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" />
+    <script type="text/javascript" src="../static/js/get_all.js"></script>
+</head>
+
+<body>
+    <div class="header-container">
+        <h1 id="header">Contactos</h1>
+        <a href="insertar">Insertar</a>
+        <a href="buscar">Buscar</a>
+        <button id="cerrarSesionBtn" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <div id="tabla_contenedor">
+        <table id="table_contactos">
+            <thead id="thead_contactos">
+                <tr>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_contactos"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // Función para cerrar sesión
+        function cerrarSesion() {
+            // Borrar token del almacenamiento (aquí asumo que estás utilizando localStorage)
+            storedToken = sessionStorage.removeItem('userToken');
+            // Redirigir a la página principal
+            window.location.href = "/";
+        }
+
+        document.body.onload = getTokenAndGetData();
+    </script>
+</body>
+
+</html>

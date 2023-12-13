@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Contactos</title>
+    <script type="text/javascript" src="../static/js/post.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" />
+</head>
+
+<body>
+    <div class="header-container">
+        <h1 id="header">Insertar Contacto</h1>
+        <a href="/contactos">Inicio</a>
+    </div>
+    <form id="search-form">
+        <p><label for="email">Email:</label>
+            <input type="text" id="email" name="email" required /></p>
+        <p><label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required /></p>
+        <p><label for="telefono">Telefono:</label>
+            <input type="text" id="telefono" name="telefono" required /></p>
+        <button type="button" onclick="post(document.getElementById('email', 'nombre', 'telefono').value)">
+            Insertar
+        </button>
+    </form>
+</body>
+
+</html>

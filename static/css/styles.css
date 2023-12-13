@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; 
+    margin: 0; 
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+.header-container h1 {
+    margin-right: 20px; 
+    font-size: 50px;
+}
+
+.header-container a {
+    margin-right: 20px; 
+    font-size: 30px;
+}
+
+#tabla_contenedor {
+    max-height: 80vh; 
+    overflow-y: auto;
+    width: 80%; 
+    margin: 0 auto; 
+}
+
+#table_contactos {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#thead_contactos th {
+    background-color: #f2f2f2;
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+#tbody_contactos td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+#tbody_contactos td:nth-child(1) {
+    width: 33%;
+}
+
+#tbody_contactos td:nth-child(2) {
+    width: 25%;
+}
+
+#tbody_contactos td:nth-child(3) {
+    width: 25%;
+}
+
+#tbody_contactos td:nth-child(4) {
+    width: 17%;
+}
+
+#tbody_contactos tr:hover {
+    background-color: #e0e0e0;
+}
+
+#tbody_contactos td:last-child {
+    text-align: center;
+}
+
+#search-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: transparent;
+    color: #4caf50;
+    padding: 10px 15px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #4caf50;
+    color: white;
+}
+
+#contacto-details {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+  
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+span {
+    font-weight: bold;
+    color: #333;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; 
+}
+
+button {
+    margin: 5px;
+}

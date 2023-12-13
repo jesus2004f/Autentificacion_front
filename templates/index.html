@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Agrega esto en el head de tu HTML -->
+
+    <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+
+    <title>Inicio de Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form" class="login-form" onsubmit="login()">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="button" onclick="login()">Iniciar Sesión</button>
+        </form>
+    </div>
+    
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Cifrar los datos
+            const encryptedUsername = CryptoJS.AES.encrypt(username, 'claveDeEncriptacion').toString();
+            const encryptedPassword = CryptoJS.AES.encrypt(password, 'claveDeEncriptacion').toString();
+
+            try {
+                // Obtener el token
+                const responseToken = await fetch('https://heroku-autentificacion-dfb5fac1dad8.herokuapp.com/token/', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic ' + btoa(username + ':' + password),
+                    },
+                });
+
+                if (responseToken.ok) {
+                    const tokenData = await responseToken.json();
+                    const token = tokenData.token;
+
+                    // Almacenar las credenciales cifradas en sessionStorage
+                    sessionStorage.setItem('username', encryptedUsername);
+                    sessionStorage.setItem('password', encryptedPassword);
+                    sessionStorage.setItem('userToken', token);
+                    // Redirigir a otra página después de obtener el token
+                    window.location.href = '/contactos';  // Cambia la ruta según tus necesidades
+
+                    // Reemplazar la entrada actual en el historial
+                    window.history.pushState({}, '', '/contactos');
+
+                } else {
+                    const errorDataToken = await responseToken.json();
+                    alert('Usuario o contraseña invalida. ' + errorDataToken.detail);
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+            }
+        }
+    </script>
+    </script>
+</body>
+</html>
