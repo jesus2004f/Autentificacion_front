@@ -23,7 +23,7 @@ function post() {
 
     // Crea una solicitud XMLHttpRequest
     var request = new XMLHttpRequest();
-    var url = 'https://heroku-autentificacion-dfb5fac1dad8.herokuapp.com/contactos';  // Modifica la URL según tu servidor local
+    var url = 'https://autentification-front-739523386c7c.herokuapp.com/contactos';  // Modifica la URL según tu servidor local
 
     request.open('POST', url);
     request.setRequestHeader('Content-Type', 'application/json');

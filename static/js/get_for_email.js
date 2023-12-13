@@ -22,7 +22,7 @@ function getForEmail() {
         .then((token) => {
             var email = document.getElementById("email").value;
             var request = new XMLHttpRequest();
-            var url = "https://heroku-autentificacion-dfb5fac1dad8.herokuapp.com/contactos/" + encodeURIComponent(email);
+            var url = "https://autentification-front-739523386c7c.herokuapp.com/contactos/" + encodeURIComponent(email);
             request.open('GET', url);
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.send();

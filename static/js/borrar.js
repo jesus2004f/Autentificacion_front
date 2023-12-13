@@ -24,7 +24,7 @@ function getContactDetails() {
     getTokenAndPerformActions()
         .then((token) => {
             var request = new XMLHttpRequest();
-            request.open('GET', "https://heroku-autentificacion-dfb5fac1dad8.herokuapp.com/contactos/" + email);
+            request.open('GET', "https://autentification-front-739523386c7c.herokuapp.com/contactos/" + email);
             request.setRequestHeader('Authorization', 'Bearer ' + token);
             request.send();
 
